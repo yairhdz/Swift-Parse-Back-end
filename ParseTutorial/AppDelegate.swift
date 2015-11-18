@@ -18,12 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Parse.setApplicationId("rOpAwgICxcE0lvesOpWoVG9Emj79QCIHZmPD9DPt", clientKey: "RjyScUOhEjzWLPLFOPrw53KEpwMyvhBzsRLwfgCw")
         
-        let player = PFObject(className: "Player")
-        player.setObject("Sally", forKey: "Name")
-        player.setObject(2400, forKey: "Score")
-        player.saveInBackgroundWithBlock { (succeeded, error) -> Void in
-            if succeeded {
-                print("Object Uploaded")
+//        let player = PFObject(className: "Player")
+//        player.setObject("Sally", forKey: "Name")
+//        player.setObject(2400, forKey: "Score")
+//        player.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+//            if succeeded {
+//                print("Object Uploaded")
+//            } else {
+//                print("Error: \(error) \(error!.userInfo)")
+//            }
+//        }
+        
+        // 1
+        let query = PFQuery(className: "Player")
+        // 2
+        query.whereKey("Name", equalTo: "John")
+        query.whereKey("Score", greaterThan: 1000)
+        // 3
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print("Successfully retrieved: \(objects)")
             } else {
                 print("Error: \(error) \(error!.userInfo)")
             }
