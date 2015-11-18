@@ -27,6 +27,17 @@ class RegisterViewController: UIViewController {
     @IBAction func signUpPressed(sender: AnyObject) {
         //TODO
         //If signup sucessful:
-        performSegueWithIdentifier(self.scrollViewWallSegue, sender: nil)
+        let user = PFUser()
+        
+        user.username = userTextField.text
+        user.password = passwordTextField.text
+        
+        user.signUpInBackgroundWithBlock { succeeded, error in
+            if (succeeded) {
+                self.performSegueWithIdentifier(self.scrollViewWallSegue, sender: nil)
+            } else if let error = error {
+                self.showErrorView(error)
+            }
+        }
     }
 }

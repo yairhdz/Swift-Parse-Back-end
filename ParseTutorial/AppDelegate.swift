@@ -29,19 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
         
-        // 1
-        let query = PFQuery(className: "Player")
-        // 2
-        query.whereKey("Name", equalTo: "John")
-        query.whereKey("Score", greaterThan: 1000)
-        // 3
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-            if error == nil {
-                print("Successfully retrieved: \(objects)")
-            } else {
-                print("Error: \(error) \(error!.userInfo)")
-            }
-        }
+//        // 1
+//        let query = PFQuery(className: "Player")
+//        // 2
+//        query.whereKey("Name", equalTo: "John")
+//        query.whereKey("Score", greaterThan: 1000)
+//        // 3
+//        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+//            if error == nil {
+//                print("Successfully retrieved: \(objects)")
+//            } else {
+//                print("Error: \(error) \(error!.userInfo)")
+//            }
+//        }
         return true
     }
 
